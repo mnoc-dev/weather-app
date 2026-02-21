@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Météo Transport</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #eef;
+        padding: 20px;
+      }
+      #weather {
+        background-color: #fff;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="weather">
+      <div>Ville : <span id="cityName">--</span></div>
+      <div>Température : <span id="temperature">--</span> °C</div>
+      <div>Vent : <span id="wind">--</span> km/h</div>
+      <div>Condition : <span id="condition">--</span></div>
+      <div>Dernière mise à jour : <span id="update-time">--</span></div>
+    </div>
+
+    <!-- Script principal en module ES6 -->
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

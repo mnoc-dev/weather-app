@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Météo Transport</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #eef;
-        padding: 20px;
-      }
-      #weather {
-        background-color: #fff;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: inline-block;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js"></script>
+    <script src="script.js"></script>
   </head>
   <body>
-    <div id="weather">
-      <div>Ville : <span id="cityName">--</span></div>
-      <div>Température : <span id="temperature">--</span> °C</div>
-      <div>Vent : <span id="wind">--</span> km/h</div>
-      <div>Condition : <span id="condition">--</span></div>
-      <div>Dernière mise à jour : <span id="update-time">--</span></div>
+    <div class="weather">
+      <section>
+        <h2 class="location" id="city-name"></h2>
+        <img class="image" id="day-night-icon" alt="Météo actuelle"></img>
+        <span class="description" id="code-meteo-info"></span>
+      </section>
+      <section class="weather-info">
+        <h2 class="temperature"><span id="temperature"></span> °C</h2>
+        <div class="details">
+          <img class="image" id="windy-weather"></img>
+          <p>Vent : <span id="windspeed"></span> km/h</p>
+          <p>Heure actuelle : <span id="time"></span></p>
+          <p>Date : <span id="date"></span></p>
+        </div>
+        <div class="event">
+          <h3>Prochain évènement dans votre ville :</h3>
+          <p> <span id="event"></span></p>
+          <p>Date 📅 : <span id="event-date"></span></p>
+          <p>Heure ⌚ : <span id="event-time"></span></p>
+          <p>Lieu 🚏 : <span id="event-place"></span></p>
+        </div>
+      </section>
     </div>
-
-    <!-- Script principal en module ES6 -->
-    <script type="module" src="main.js"></script>
   </body>
 </html>

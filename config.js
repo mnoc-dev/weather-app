@@ -1,5 +1,5 @@
 const CONFIG = {
-  city: "Reykjavik",
+  city: "Nantes",
   event: "Journée internationale de lutte pour les droits des femmes",
   eventDate: "8/03/26",
   eventTime: "13:30",

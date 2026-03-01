@@ -1,35 +1,36 @@
 function getCityLatLng(cityName) {
-const url = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en&format=json`;
+const url = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en`;
 
   return fetch(url)
     .then(response => response.json())
     .then(json => ({
       latitude: json.results[0].latitude,
       longitude: json.results[0].longitude,
+
     }))
 }
 
 async function Weather() {
 const latLng = await getCityLatLng(CONFIG.city)
-const url = `https://api.open-meteo.com/v1/forecast?latitude=${latLng.latitude}&longitude=${latLng.longitude}&current_weather=true&hourly=weather_code&timezone=auto`;
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latLng.latitude}&longitude=${latLng.longitude}&current=temperature_2m,weather_code,wind_speed_10m,is_day`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      const weather = data.current_weather;
-      console.log(data.current_weather);
+      const weather = data.current;
+      console.log(data.current);
       document.getElementById("city-name").textContent = CONFIG.city;
       document.getElementById("event").textContent = CONFIG.event;
       document.getElementById("event-time").textContent = CONFIG.eventTime;
       document.getElementById("event-date").textContent = CONFIG.eventDate;
       document.getElementById("event-place").textContent = CONFIG.eventPlace;
       
-      document.getElementById("temperature").textContent = (Math.ceil(weather.temperature));
-      document.getElementById("windspeed").textContent = weather.windspeed;
+      document.getElementById("temperature").textContent = (Math.ceil(weather.temperature_2m));
+      document.getElementById("windspeed").textContent = weather.wind_speed_10m;
       document.getElementById("time").textContent = weather.time.split("T")[1];
       const date = weather.time.split("T")[0];
       const dateDuJour = new Date (date);
       document.getElementById("date").textContent = dateDuJour.toLocaleDateString("fr-FR");
-      const weatherCode = weather.weathercode;
+      const weatherCode = weather.weather_code;
       const dayNight = Number(weather.is_day);
      if (weatherCode === 0 ){
       document.getElementById("code-meteo-info").textContent = "Ciel clair";

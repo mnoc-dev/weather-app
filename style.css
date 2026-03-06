@@ -5,7 +5,7 @@
 }
 :root{
     --primary:#f7f7f7;
-    --secondary: #FFDCC5;
+    --secondary: #FBE3CB;
     --tertiary: #1447E6;
     --text: #432DD7;
     --shadow: rgba(0, 0, 0, 0.1);
@@ -22,12 +22,12 @@
     margin : 150px auto;
     display: grid;
     grid-template-columns: repeat(2 , 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
     margin-bottom: 1.25rem;
 }
-    .weather h2{
-        font-size: clamp(2rem, 10vmin, 5rem);
-    }
+.weather h2{
+    font-size: clamp(2rem, 10vmin, 5rem);
+}
 
 .location {
   font-size: 5rem;
@@ -40,35 +40,70 @@
     justify-content: center;
     margin: 1.25rem;
 }
-
-.temperature {
-    font-size: 5rem;
+.sun-image{
+    width: 5rem ;
 }
-.image{
-    width: 10rem;
-    padding-bottom: 2rem;   
+.sun{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
-
-.details{
-    font-weight: bold;
+.sunrise,
+.sunset {
+    background-color: var(--secondary);
     border-radius: 0.75rem;
     box-shadow: 0 2px 10px var(--shadow);
     padding: 1.25rem;
+    margin: 1.25rem;
+    font-size: clamp(0.75rem, 1.5vmin, 3rem);
+
+}
+.temperature {
+    font-size: 5rem;
+}
+.details-event-grid{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+
+}
+.image{
+    width: 10rem;
+    
+
+}
+.update{
+    padding-top: 1rem;
+    font-weight: 100;
+    font-size: clamp(0.75rem, 1.5vmin, 3rem);
+}
+.details{
+    font-weight: bold;
+    background-color: var(--secondary);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 10px var(--shadow);
+    padding: 1.25rem;
+    padding-top: 0rem;
     margin: 1.25rem;
     max-width:100%;
     font-size: clamp(1.5rem, 2.5vmin, 3rem);
     
 }
-
-.details p span{
-    padding-bottom: 2rem;
-}
-
 .event{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--secondary);
     padding: 1.25rem;
+    padding-top: 0rem;
     margin: 1.25rem;
+    border-radius: 0.75rem;
     box-shadow: 0 2px 10px var(--shadow);
-    max-width:100%;
+    max-width: 100%;
+    max-height: 75%;
+
+    
 }
 .event h3{
     padding-bottom: 0.5rem;

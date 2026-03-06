@@ -14,21 +14,34 @@
         <h2 class="location" id="city-name"></h2>
         <img class="image" id="day-night-icon" alt="Météo actuelle"></img>
         <span class="description" id="code-meteo-info"></span>
+        <div class="sun">
+          <div class="sunrise">
+            <img class="sun-image" src="icons\sunrise.png" alt="Lever du soleil">
+            <h3 >L'aube : <span id="dawn"></span></h3>
+          </div>
+          <div class="sunset">
+            <img class="sun-image" src="icons\sunset.png" alt="Coucher du soleil">
+            <h3 >Le crépuscule : <span id="dusk"></span></h3>
+          </div>
+        </div>
       </section>
       <section class="weather-info">
         <h2 class="temperature"><span id="temperature"></span> °C</h2>
-        <div class="details">
+        <div class="details-event-grid">
+          <div class="details">
           <img class="image" id="windy-weather"></img>
           <p>Vent : <span id="windspeed"></span> km/h</p>
-          <p>Heure actuelle : <span id="time"></span></p>
+          <p>Humidité : <span id="humidity"></span> %</p>
           <p>Date : <span id="date"></span></p>
-        </div>
-        <div class="event">
+          <p class="update">Dernière mise à jour des données météorologiques à : <span id="time"></span></p>
+          </div>
+          <div class="event">
           <h3>Prochain évènement dans notre ville :</h3>
           <p> <span id="event"></span></p>
           <p>Date 📅 : <span id="event-date"></span></p>
           <p>Heure ⌚ : <span id="event-time"></span></p>
           <p>Lieu 🚏 : <span id="event-place"></span></p>
+          </div>
         </div>
       </section>
     </div>

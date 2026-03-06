@@ -12,12 +12,13 @@ const url = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&cou
 
 async function Weather() {
 const latLng = await getCityLatLng(CONFIG.city)
-const url = `https://api.open-meteo.com/v1/forecast?latitude=${latLng.latitude}&longitude=${latLng.longitude}&current=temperature_2m,weather_code,wind_speed_10m,is_day`;
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latLng.latitude}&longitude=${latLng.longitude}&daily=sunrise,sunset&hourly=temperature_2m&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,relative_humidity_2m&timezone=auto`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
       const weather = data.current;
       console.log(data.current);
+      
       document.getElementById("city-name").textContent = CONFIG.city;
       document.getElementById("event").textContent = CONFIG.event;
       document.getElementById("event-time").textContent = CONFIG.eventTime;
@@ -26,12 +27,21 @@ const url = `https://api.open-meteo.com/v1/forecast?latitude=${latLng.latitude}&
       
       document.getElementById("temperature").textContent = (Math.ceil(weather.temperature_2m));
       document.getElementById("windspeed").textContent = weather.wind_speed_10m;
+      document.getElementById("humidity").textContent = weather.relative_humidity_2m;
+
       document.getElementById("time").textContent = weather.time.split("T")[1];
       const date = weather.time.split("T")[0];
       const dateDuJour = new Date (date);
       document.getElementById("date").textContent = dateDuJour.toLocaleDateString("fr-FR");
+
       const weatherCode = weather.weather_code;
       const dayNight = Number(weather.is_day);
+
+      const sunrise = data.daily;
+      const sunset = data.daily;
+      document.getElementById("dawn").textContent = sunrise.sunrise[0].split("T")[1];
+      document.getElementById("dusk").textContent = sunset.sunset[0].split("T")[1];
+
      if (weatherCode === 0 ){
       document.getElementById("code-meteo-info").textContent = "Ciel clair";
       document.getElementById("day-night-icon").src = "icons/01d.svg";
@@ -103,8 +113,10 @@ const url = `https://api.open-meteo.com/v1/forecast?latitude=${latLng.latitude}&
        else{
       document.getElementById("code-meteo-info").textContent = "Orages et grêles";
       document.getElementById("day-night-icon").src = "icons/11d.svg";
-     }
-      const windyWeather = Number(weather.windspeed);
+      }
+      
+      const windyWeather = Number(weather.wind_speed_10m);
+      
       if(windyWeather >= 30){
       document.getElementById("windy-weather").src = "icons/wind.png";
       }
